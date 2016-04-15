@@ -1,21 +1,12 @@
 package com.connectfour.model;
 
 public class Board {
-	private Checker[][] board;
+	private char[][] checker;
 	private int height;
 	private int width;
-	private int lastX;
-	private int lastY;
-	
-	public Board() {
-		this.board = new Checker[6][7];
-		this.height = 6;
-		this.width = 7;
-		
-	}
 	
 	public Board(int rows, int cols) {
-		this.board = new Checker[rows][cols];
+		this.checker = new char[rows][cols];
 		this.height = rows;
 		this.width = cols;
 	}
@@ -26,89 +17,51 @@ public class Board {
 	public int getWidth() {
 		return width;
 	}
-	public int getLastX() {
-		return lastX;
-	}
-	public int getLastY() {
-		return lastY;
+
+	public char[][] getChecker() {
+		return checker;
 	}
 	
-	public Checker get (int row, int col) {
-		return this.board[row][col];
-	}
-	
-	public void set (Checker checker, int col) {
-		int rowPointer = height - 1;
-		boolean slotEmpty = true;
-		
-		while (slotEmpty) {
-			
-			if (rowPointer < 0) {
-				System.err.println("Column is full. Checker not placed...");
-				break;
-			}
-			if (board[rowPointer][col] == null) {
-				
-				System.err.println("space is empty. Placing checker...");
-				board[rowPointer][col] = checker;
-				lastX = col;
-				lastY = rowPointer;
-				slotEmpty = false;
-				
-			}
-			rowPointer--;
-		}
-	}
-	
-	private boolean checkWin(int row, int col) {
-		boolean isWin = false;
-		int xp = col;
-		int yp = row;
-		int count = 0;
-		int color = board[row][col].getColor();
-		
-		//Check L
-		while (board[row][xp].getColor() == color && count != 4) {
-			if (board[row][xp].getColor() == color) {
-				count++;
-				xp--;
-			}
-			else {
-				break;
-			}
-		}
-		
-		//Check R
-		while (xp <  width) {
-			xp++;
-			if (board[row][xp].getColor() == board[row][col].getColor()) {
-				count++;
-			}
-		}
-		
-		
-		//Check U
-		//Check D
-		
-		//Check LU
-		//Check RD
-		
-		//Check LD
-		//Check RU
-		return isWin;
+	public void initializeBoard() {
+		// Initialize with spaces
+        for (int i = 0; i < 7; ++i) {
+        	for (int j = 0; j < 7; ++j) {
+        		checker[i][j] = ' ';
+        	}
+        }
+        printBoard();
 	}
 	
 	public void printBoard() {
-		for (int r = 0; r < board.length; r++) {
-			for (int c = 0; c < board[0].length; c++) {
-				if (board[r][c] == null) {
-					System.out.print("- ");
-				} else {
-					System.out.print(board[r][c] + " ");
-				}
-			}
-			System.out.println();
-		}
-	}
+        for (int row = 0; row < height; ++row) {
+            System.out.print("| ");
+            for (int col = 0; col < width; ++col) {
+            	System.out.print(checker[row][col] + "| ");
+            }
+            System.out.println();
+        }
+        
+        for (int col = 0; col < 7; ++col) {
+        	System.out.print("---");
+        }
+        System.out.println();
+    }
 	
+	public boolean putColorChar(int column, char color) {
+        // If the first char is there, the column is filled, returning false.
+        if (checker[0][column] != ' ') {
+        	return false;
+        }
+        
+        for (int row = 0; row < height; ++row) {
+            if (checker[row][column] != ' ') {
+                // Putting the char on top of the current one.
+            	checker[row-1][column] = color;
+                return true;
+            }
+        }
+        // If no other char found, then place this char at the bottom.
+        checker[height-1][column] = color;
+        return true;
+    }
 }
