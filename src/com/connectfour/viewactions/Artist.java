@@ -31,6 +31,11 @@ public class Artist {
 		glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 		glEnable(GL_TEXTURE_2D);
+		//Next two lines allow us to use transparency in images
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+		
+		
 	}
 	
 	public static void DrawQuad(float x, float y, float width, float height ){
@@ -69,6 +74,13 @@ public class Artist {
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
+		return tex;
+	}
+	
+	//automates the source location so that we only need to type in the file name
+	public static Texture FastTex(String name){
+		Texture tex = null;
+		tex = LoadTexture("com/connectfour/res/"+ name + ".png", "PNG");
 		return tex;
 	}
 

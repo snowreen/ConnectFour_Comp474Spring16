@@ -15,10 +15,14 @@ public class Boot {
 	
 		BeginSession();
 		
-		Texture t = LoadTexture("com/connectfour/res/EmptySlot.png","PNG");
+		
+		
+		Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
 		while(!Display.isCloseRequested()){
 		 
-			DrawQuadTex(t, 0, 0, 64, 64);
+			
+			DrawQuadTex(empTile.getTexture(),empTile.getX(), empTile.getY(), empTile.getWidth(), empTile.getHeight());
+			//DrawQuadTex(redPiece, 0, 0, 64, 64);
 			
 			Display.update();
 			Display.sync(60);
