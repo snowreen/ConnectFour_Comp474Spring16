@@ -1,7 +1,7 @@
 package com.connectfour.model;
 
 public class Board {
-	private char[][] checker;
+	public char[][] checker;
 	private int height;
 	private int width;
 	
