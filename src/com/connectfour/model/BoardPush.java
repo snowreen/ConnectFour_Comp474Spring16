@@ -1,15 +1,12 @@
 package com.connectfour.model;
 
-public class Board {
+public class BoardPush extends Board {
+
 	private char[][] checker;
 	private int height;
 	private int width;
 	
-	public Board() {
-		this(6,7);
-	}
-	
-	public Board(int rows, int cols) {
+	public BoardPush(int rows, int cols) {
 		this.checker = new char[rows][cols];
 		this.height = rows;
 		this.width = cols;
@@ -57,15 +54,14 @@ public class Board {
         	return false;
         }
         
-        for (int row = 0; row < height; ++row) {
-            if (checker[row][column] != ' ') {
-                // Putting the char on top of the current one.
-            	checker[row-1][column] = color;
-                return true;
+        for (int row = 1; row < height; row++) {
+        	//Move each char "up" one in the column
+        	checker[row-1][column] = checker[row][column];
+        	//Set the newest char at the bottom of the column
+        	if (row == height - 1) {
+                checker[row][column] = color;
             }
         }
-        // If no other char found, then place this char at the bottom.
-        checker[height-1][column] = color;
         return true;
     }
 }
