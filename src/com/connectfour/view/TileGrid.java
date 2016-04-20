@@ -1,10 +1,12 @@
 package com.connectfour.view;
 import static com.connectfour.viewactions.Artist.*;
+import static com.connectfour.viewactions.UI.*;
 
 import com.connectfour.model.Board;
+import com.connectfour.viewactions.UI;
 
 public class TileGrid {
-	
+	private UI boardUI;
 	public Tile[][] map;
 	
 	public TileGrid(){
@@ -44,6 +46,7 @@ public class TileGrid {
 	}
 	
 	public void Draw(){
+		boardUI = new UI();
 		for (int i = 0; i < map.length; i++){
 			for (int j = 0 ; j < map[i].length; j++){
 				Tile t = map[i][j];
@@ -52,6 +55,7 @@ public class TileGrid {
 		}
 		//Draw line of buttons
 		for (int k = 0; k < 448; k+=64){
+			//boardUI.addButton("DropButton", "DropButton", k, 448);
 			DrawQuadTex(FastTex("DropButton"),k,448,64,64);
 			
 		}

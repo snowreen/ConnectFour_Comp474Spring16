@@ -6,12 +6,20 @@ import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.opengl.Texture;
 
 import com.connectfour.model.Board;
+import com.connectfour.viewactions.UI;
 
 import static org.lwjgl.opengl.GL11.*;
 
 import static com.connectfour.viewactions.Artist.*;
 
+
+
+
+
+
 public class Boot {
+	
+	//private UI gameUI;
 
 	public Boot(){
 	
