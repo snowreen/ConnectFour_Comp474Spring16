@@ -20,12 +20,13 @@ import static com.connectfour.viewactions.Artist.*;
 public class Boot {
 	
 	//private UI gameUI;
+	public Board map;
 
-	public Boot(){
+	public Boot(Board gameBoard){
 	
 		BeginSession();
 		
-		Board map = new Board(7,7);
+		this.map = gameBoard;
 		map.initializeBoard();		
 		TileGrid grid = new TileGrid(map);
 		//Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
@@ -44,6 +45,6 @@ public class Boot {
 	
 	
 	public static void main(String[] args){
-		new Boot();
+		new Boot(new Board(7,7) );
 	}
 }

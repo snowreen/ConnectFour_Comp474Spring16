@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.connectfour.model.Board;
 import com.connectfour.model.WinCheck;
+import com.connectfour.view.Boot;
 
 public class Main {
 
