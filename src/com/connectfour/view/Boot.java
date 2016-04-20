@@ -26,22 +26,23 @@ public class Boot {
 		BeginSession();
 		
 		Board map = new Board(7,7);
-		map.initializeBoard();
-		map.checker[4][3] = 'r';
+		map.initializeBoard();		
 		TileGrid grid = new TileGrid(map);
 		//Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
 		while(!Display.isCloseRequested()){
 		 
-			
-			grid.Draw();
+			grid.update();
+			//grid.Draw();
 			//DrawQuadTex(redPiece, 0, 0, 64, 64);
-			
+			map.putColorChar(1, 'r');			
 			Display.update();
 			Display.sync(60);
 			
 		}
 		Display.destroy();
 	}
+	
+	
 	public static void main(String[] args){
 		new Boot();
 	}
