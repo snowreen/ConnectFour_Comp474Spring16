@@ -16,7 +16,7 @@ public class Artist {
 	//Width and Height of the user interface window
 	public static final int WIDTH = 448, HEIGHT = 512;
 	
-	public static void BeginSession(){
+	public static void BeginSession() {
 		
 		Display.setTitle("Connect Four");
 		try {
