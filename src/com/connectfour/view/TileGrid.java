@@ -49,6 +49,8 @@ public class TileGrid {
 			}
 		}				
 	}
+	
+	
 	//to be placed in boot while loop to update the view of the board
 	public void update(){
 		this.Draw();
@@ -57,11 +59,12 @@ public class TileGrid {
 	//lets us set actions when buttons are pressed
 	private void updateButtons(){
 		if (Mouse.isButtonDown(0)){			
-			if(boardUI.isButtonClicked("DropButton"+i)){
+			if(boardUI.isButtonClicked("DropButton1")){
 				/*This is not working right now, i think it will 
 				 *when we pull the Boot into the main class
 				 */
-				System.out.println("TEMPORARY");;
+					
+				System.out.println("TEMPORARY");
 			}					
 		}
 	}

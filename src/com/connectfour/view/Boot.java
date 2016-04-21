@@ -39,7 +39,7 @@ public class Boot {
 			grid.update();
 			//grid.Draw();
 			//DrawQuadTex(redPiece, 0, 0, 64, 64);
-			map.putColorChar(1, 'r');			
+			
 			Display.update();
 			Display.sync(60);
 			
