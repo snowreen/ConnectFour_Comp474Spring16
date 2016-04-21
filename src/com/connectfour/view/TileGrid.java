@@ -58,14 +58,20 @@ public class TileGrid {
 	}
 	//lets us set actions when buttons are pressed
 	private void updateButtons(){
-		if (Mouse.isButtonDown(0)){			
-			if(boardUI.isButtonClicked("DropButton1")){
-				/*This is not working right now, i think it will 
-				 *when we pull the Boot into the main class
-				 */
-					
-				System.out.println("TEMPORARY");
-			}					
+		//if (Mouse.isButtonDown(0)){
+		while(Mouse.next()){
+			if(Mouse.getEventButton() > -1){
+				if(Mouse.getEventButtonState()){
+			
+					if(boardUI.isButtonClicked("DropButton1")){
+					/*This is not working right now, i think it will 
+					 *when we pull the Boot into the main class
+					 */
+						
+					System.out.println("TEMPORARY");
+					}
+				}
+			}
 		}
 	}
 	
