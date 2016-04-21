@@ -31,6 +31,7 @@ public class Main {
 		
 		board.initializeBoard();
 		
+		new Boot(board);
 		// This variable will alternate and mean whose turn is it. It is Red's turn now.
         boolean isRed = true;
         String value = null;
@@ -39,7 +40,7 @@ public class Main {
             if (isRed)
                 System.out.println("Red's turn now!");            
             else 
-                System.out.println("Blue's turn now!");
+                System.out.println("Black's turn now!");
             System.out.print("Pick a spot from column 1 to 7:");
             value = input.next();
             if (value.equalsIgnoreCase("reset")) {
@@ -67,7 +68,7 @@ public class Main {
                 break;
             }
             else if (result == 'B') {
-                System.out.println("Blue wins!");
+                System.out.println("Black wins!");
                 break;
             }
             
