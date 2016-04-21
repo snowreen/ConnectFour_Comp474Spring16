@@ -44,8 +44,11 @@ public class Boot {
 			Display.update();
 			Display.sync(60);
 			
+			
 		}
+		
 		Display.destroy();
+		System.err.println("Display destroyed");
 	}	
 	
 	/*public static void main(String[] args){
