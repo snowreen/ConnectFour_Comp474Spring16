@@ -26,7 +26,7 @@ public class Boot {
 	public Boot(Board gameBoard){
 	
 =======
-	public Boot(){
+	
 		System.err.println("booting up view now...");
 >>>>>>> adab654f46a72c52d57afa66336e1db4e78066a4
 		BeginSession();
