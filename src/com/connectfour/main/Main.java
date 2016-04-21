@@ -38,7 +38,7 @@ public class Main {
         Boot game = new Boot(board);
         while (true) {
         	System.out.println("Please type \"reset\" to restart the game anytime!");
-            if (isRed)
+            if (board.currentColor=='R')
                 System.out.println("Red's turn now!");            
             else 
                 System.out.println("Black's turn now!");

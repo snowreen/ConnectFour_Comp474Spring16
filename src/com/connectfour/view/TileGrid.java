@@ -64,25 +64,25 @@ public class TileGrid {
 				if(Mouse.getEventButtonState()){
 			
 					if(boardUI.isButtonClicked("DropButton0")){							
-						board.putColorChar(0, 'r');
+						board.putColorChar(0, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton1")){							
-						board.putColorChar(1, 'r');
+						board.putColorChar(1, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton2")){							
-						board.putColorChar(2, 'r');
+						board.putColorChar(2, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton3")){							
-						board.putColorChar(3, 'r');
+						board.putColorChar(3, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton4")){							
-						board.putColorChar(4, 'r');
+						board.putColorChar(4, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton5")){							
-						board.putColorChar(5, 'r');
+						board.putColorChar(5, board.currentColor);
 					}
 					if(boardUI.isButtonClicked("DropButton6")){							
-						board.putColorChar(6, 'r');
+						board.putColorChar(6, board.currentColor);
 					}
 				}
 			}
