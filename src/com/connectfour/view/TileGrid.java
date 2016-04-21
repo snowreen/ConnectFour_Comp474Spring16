@@ -52,23 +52,37 @@ public class TileGrid {
 	
 	
 	//to be placed in boot while loop to update the view of the board
-	public void update(){
+	public void update(Board board){
 		this.Draw();
-		updateButtons();
+		updateButtons(board);
 	}
 	//lets us set actions when buttons are pressed
-	private void updateButtons(){
+	private void updateButtons(Board board){
 		//if (Mouse.isButtonDown(0)){
 		while(Mouse.next()){
 			if(Mouse.getEventButton() > -1){
 				if(Mouse.getEventButtonState()){
 			
-					if(boardUI.isButtonClicked("DropButton1")){
-					/*This is not working right now, i think it will 
-					 *when we pull the Boot into the main class
-					 */
-						
-					System.out.println("TEMPORARY");
+					if(boardUI.isButtonClicked("DropButton0")){							
+						board.putColorChar(0, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton1")){							
+						board.putColorChar(1, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton2")){							
+						board.putColorChar(2, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton3")){							
+						board.putColorChar(3, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton4")){							
+						board.putColorChar(4, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton5")){							
+						board.putColorChar(5, 'r');
+					}
+					if(boardUI.isButtonClicked("DropButton6")){							
+						board.putColorChar(6, 'r');
 					}
 				}
 			}

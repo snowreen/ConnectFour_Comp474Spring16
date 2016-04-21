@@ -36,7 +36,7 @@ public class Boot {
 		//Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
 		while(!Display.isCloseRequested()){
 		 
-			grid.update();
+			grid.update(map);
 			//grid.Draw();
 			//DrawQuadTex(redPiece, 0, 0, 64, 64);
 			
