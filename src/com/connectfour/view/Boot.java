@@ -21,6 +21,7 @@ public class Boot {
 	
 	//private UI gameUI;
 	public Board map;
+	public TileGrid grid;
 
 	//take in board variable from main
 	public Boot(Board gameBoard){	
@@ -31,7 +32,7 @@ public class Boot {
 		
 		this.map = gameBoard;
 		map.initializeBoard();		
-		TileGrid grid = new TileGrid(map);
+		grid = new TileGrid(map);
 		//Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
 		while(!Display.isCloseRequested()){
 		 
@@ -46,7 +47,7 @@ public class Boot {
 		Display.destroy();
 	}	
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		new Boot(new Board(7,7) );
-	}
+	}*/
 }

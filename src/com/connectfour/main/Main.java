@@ -31,7 +31,7 @@ public class Main {
 		
 		board.initializeBoard();
 		
-		new Boot(board);
+		
 		// This variable will alternate and mean whose turn is it. It is Red's turn now.
         boolean isRed = true;
         String value = null;
@@ -73,6 +73,8 @@ public class Main {
             }
             
             isRed = !isRed;
+            Boot game = new Boot(board);
+            
         }
         
         if (value.equalsIgnoreCase("reset")) {
