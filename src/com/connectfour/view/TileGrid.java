@@ -79,10 +79,15 @@ for (int i = 0; i <map.length; i++){
 	}
 	//lets us set actions when buttons are pressed
 	private void updateButtons(Board board){
+		
 		//if (Mouse.isButtonDown(0)){
 		while(Mouse.next()){
 			if(Mouse.getEventButton() > -1){
 				if(Mouse.getEventButtonState()){
+					if (board.currentColor=='B')
+		                System.out.println("Red's turn now!");            
+		            else 
+		                System.out.println("Black's turn now!");
 			
 					if(boardUI.isButtonClicked("DropButton0")){							
 						board.putColorChar(0, board.currentColor);
@@ -109,7 +114,7 @@ for (int i = 0; i <map.length; i++){
 						board.initializeBoard();
 					}
 				}
-			}
+            }
 		}
 	}
 	

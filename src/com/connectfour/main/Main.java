@@ -19,7 +19,6 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		System.err.println("Scanner initialized...");
 		
-		//new Boot();
 		
 		playConnectFour(input, board);
 		
@@ -37,6 +36,7 @@ public class Main {
         boolean isRed = true;
         String value = null;
         Boot game = new Boot(board);
+        System.err.println("Boot Complete");
         while (true) {
         	System.out.println("Please type \"reset\" to restart the game anytime!");
             if (board.currentColor=='R')
