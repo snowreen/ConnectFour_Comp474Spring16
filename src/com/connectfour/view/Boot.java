@@ -22,13 +22,11 @@ public class Boot {
 	//private UI gameUI;
 	public Board map;
 
-<<<<<<< HEAD
-	public Boot(Board gameBoard){
-	
-=======
-	
+	//take in board variable from main
+	public Boot(Board gameBoard){	
+
 		System.err.println("booting up view now...");
->>>>>>> adab654f46a72c52d57afa66336e1db4e78066a4
+
 		BeginSession();
 		
 		this.map = gameBoard;
@@ -46,14 +44,9 @@ public class Boot {
 			
 		}
 		Display.destroy();
-	}
-<<<<<<< HEAD
-	
+	}	
 	
 	public static void main(String[] args){
 		new Boot(new Board(7,7) );
 	}
-=======
-
->>>>>>> adab654f46a72c52d57afa66336e1db4e78066a4
 }
