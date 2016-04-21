@@ -54,8 +54,8 @@ public class Board {
 	  */
 	public void initializeBoard() {
 		// Initialize with spaces
-        for (int i = 0; i < 7; ++i) {
-        	for (int j = 0; j < 7; ++j) {
+        for (int i = 0; i < height; ++i) {
+        	for (int j = 0; j < width; ++j) {
         		checker[i][j] = ' ';
         	}
         }
