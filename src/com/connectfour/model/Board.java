@@ -35,7 +35,8 @@ public class Board {
         	}
         }
         printBoard();
-	}
+	}	
+	
 	
 	public void printBoard() {
         for (int row = 0; row < height; ++row) {

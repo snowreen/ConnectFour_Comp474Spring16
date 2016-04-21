@@ -105,6 +105,9 @@ for (int i = 0; i <map.length; i++){
 					if(boardUI.isButtonClicked("DropButton6")){							
 						board.putColorChar(6, board.currentColor);
 					}
+					if(boardUI.isButtonClicked("Reset")){							
+						board.initializeBoard();
+					}
 				}
 			}
 		}
@@ -112,6 +115,15 @@ for (int i = 0; i <map.length; i++){
 	
 	public void Draw(Board board){
 		boardUI = new UI();
+		boardUI.addButton("Reset", "Reset", 448, 128);
+		DrawQuadTex(FastTex("CurrentPlayer"), (float)448, (float)0, (float)64, (float)64);
+		//Display current player
+		if (board.currentColor=='R'){
+			DrawQuadTex(FastTex("RedPlayer"), (float)448, (float)64, (float)64, (float)64);
+		}
+		else{
+			DrawQuadTex(FastTex("BlackPlayer"), (float)448, (float)64, (float)64, (float)64);
+		}
 		for (int i = 0; i < map.length; i++){
 			for (int j = 0 ; j < map[i].length; j++){
 				Tile t = map[i][j];
@@ -120,10 +132,9 @@ for (int i = 0; i <map.length; i++){
 		}
 		//Draw line of buttons
 		for (int k = 0; k < 7; k++){
-			boardUI.addButton("DropButton"+k, "DropButton", k*64, 448);
-			//DrawQuadTex(FastTex("DropButton"),k,448,64,64);
-			
+			boardUI.addButton("DropButton"+k, "DropButton", k*64, 448);						
 		}
+		
 		boardUI.draw();	
 	}
 }

@@ -14,7 +14,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class Artist {
 	//Width and Height of the user interface window
-	public static final int WIDTH = 448, HEIGHT = 512;
+	public static final int WIDTH = 512, HEIGHT = 512;
 	
 	public static void BeginSession() {
 		

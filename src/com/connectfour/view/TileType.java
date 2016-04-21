@@ -5,8 +5,9 @@ package com.connectfour.view;
  */
 public enum TileType {
 	
-	EmptySlot("emptySlot", false), RedPiece("RedPiece",false), 
-	BlackPiece("BlackPiece",false), DropButton("DropButton",true);
+	EmptySlot("emptySlot", false), RedPiece("RedPiece",false), CurrentPlayer("CurrentPlayer",false),
+	BlackPiece("BlackPiece",false), DropButton("DropButton",true), Reset("Reset",true),
+	RedPlayer("RedPlayer", false), BlackPlayer("BlackPlayer", false);
 
 	String textureName;
 	boolean pressable;

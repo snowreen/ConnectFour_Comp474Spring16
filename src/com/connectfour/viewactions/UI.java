@@ -18,6 +18,10 @@ public class UI {
 		buttonList.add(new Button(name, FastTex(texName), x, y));
 	}
 	
+	public void addButton(String name, String texName, int x, int y, int width, int height){
+		buttonList.add(new Button(name, FastTex(texName), x, y, width, height));
+	}
+	
 	public boolean isButtonClicked(String buttonName){
 		Button b = getButton(buttonName);
 		float mouseY = HEIGHT - Mouse.getY() - 1;
