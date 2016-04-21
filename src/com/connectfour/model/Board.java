@@ -13,7 +13,7 @@ public class Board {
 	  * Takes no parameters and calls the overloaded constructor below
 	  */
 	public Board() {
-		this(6,7);
+		this(7,7);
 	}
 	
 	/**
@@ -59,7 +59,6 @@ public class Board {
         		checker[i][j] = ' ';
         	}
         }
-        printBoard();
 	}	
 	
 	/** 

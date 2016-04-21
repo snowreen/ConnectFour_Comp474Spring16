@@ -13,7 +13,7 @@ public class Main {
 		
 		System.err.println("Main start...");
 
-		Board board = new Board(7, 7);
+		Board board = new Board();
 		System.err.println("Board initialized...");
 		
 		Scanner input = new Scanner(System.in);
