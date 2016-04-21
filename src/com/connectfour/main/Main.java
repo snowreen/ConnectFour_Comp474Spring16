@@ -3,6 +3,7 @@ package com.connectfour.main;
 import java.util.Scanner;
 
 import com.connectfour.model.Board;
+import com.connectfour.model.BoardPush;
 import com.connectfour.model.WinCheck;
 import com.connectfour.view.Boot;
 
