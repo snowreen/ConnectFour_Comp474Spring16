@@ -2,6 +2,7 @@ package com.connectfour.model;
 
 public class Board {
 	public char[][] checker;
+	public char currentColor = 'B';
 	private int height;
 	private int width;
 	
@@ -51,6 +52,14 @@ public class Board {
         System.out.println();
     }
 	
+	private char colorSwitch(char color){
+		if(color=='R'){
+			color='B';
+		}
+		else color = 'R';
+		return color;
+	}
+	
 	public boolean putColorChar(int column, char color) {
         // If the first char is there, the column is filled, returning false.
         if (checker[0][column] != ' ') {
@@ -61,11 +70,14 @@ public class Board {
             if (checker[row][column] != ' ') {
                 // Putting the char on top of the current one.
             	checker[row-1][column] = color;
+            	this.currentColor=colorSwitch(this.currentColor);    
                 return true;
             }
         }
         // If no other char found, then place this char at the bottom.
         checker[height-1][column] = color;
+        this.currentColor=colorSwitch(this.currentColor);       	
+        
         return true;
     }
 }

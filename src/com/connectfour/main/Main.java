@@ -35,6 +35,7 @@ public class Main {
 		// This variable will alternate and mean whose turn is it. It is Red's turn now.
         boolean isRed = true;
         String value = null;
+        Boot game = new Boot(board);
         while (true) {
         	System.out.println("Please type \"reset\" to restart the game anytime!");
             if (isRed)
@@ -51,7 +52,7 @@ public class Main {
                 System.out.println("Column should be from 1 to 7");
                 continue;
             }
-            if (!board.putColorChar(column - 1, isRed ? 'R' : 'B')) {
+            if (!board.putColorChar(column - 1, board.currentColor)) {
                 System.out.println("This column is filled! Choose another one.");
                 continue;
             }
@@ -73,7 +74,7 @@ public class Main {
             }
             
             isRed = !isRed;
-            Boot game = new Boot(board);
+            
             
         }
         
