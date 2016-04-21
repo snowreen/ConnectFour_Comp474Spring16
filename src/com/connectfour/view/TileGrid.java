@@ -37,12 +37,11 @@ public class TileGrid {
 				switch(newMap.checker[j][i]){
 				case ' ':
 					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.EmptySlot);
-					break;
-					
-				case 'r':
+					break;					
+				case 'R':
 					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.RedPiece);
 					break;
-				case 'b':
+				case 'B':
 					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.BlackPiece);
 					break;				
 				}				
@@ -53,7 +52,29 @@ public class TileGrid {
 	
 	//to be placed in boot while loop to update the view of the board
 	public void update(Board board){
-		this.Draw();
+for (int i = 0; i <map.length; i++){
+			
+			for (int j = 0; j<map[i].length; j++){
+				/* 
+				 * Checks the value board location 
+				 * blank is empty square 
+				 * r is red piece
+				 * b is black piece
+				 */
+				switch(board.checker[j][i]){
+				case ' ':
+					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.EmptySlot);
+					break;					
+				case 'R':
+					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.RedPiece);
+					break;
+				case 'B':
+					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.BlackPiece);
+					break;				
+				}				
+			}
+		}
+		this.Draw(board);
 		updateButtons(board);
 	}
 	//lets us set actions when buttons are pressed
@@ -89,7 +110,7 @@ public class TileGrid {
 		}
 	}
 	
-	public void Draw(){
+	public void Draw(Board board){
 		boardUI = new UI();
 		for (int i = 0; i < map.length; i++){
 			for (int j = 0 ; j < map[i].length; j++){

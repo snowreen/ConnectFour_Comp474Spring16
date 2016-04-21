@@ -22,6 +22,7 @@ public class Boot {
 	//private UI gameUI;
 	public Board map;
 	public TileGrid grid;
+	public boolean isPlayed = true;
 
 	//take in board variable from main
 	public Boot(Board gameBoard){	
@@ -38,7 +39,7 @@ public class Boot {
 		 
 			grid.update(map);
 			//grid.Draw();
-			//DrawQuadTex(redPiece, 0, 0, 64, 64);
+			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
 			
 			Display.update();
 			Display.sync(60);
