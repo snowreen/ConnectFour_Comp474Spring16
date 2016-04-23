@@ -10,17 +10,17 @@ public class WinCheck {
 	}
 	
 
-	public char getWinner() {
+	public char getWinner(Board board) {
 		char winner = checkHorizontal();
-        if (winner != ' ') {
+        if (winner != ' ') {        	
         	return winner;
         }
         winner = checkVertical();
-        if (winner != ' ') {
+        if (winner != ' ') {        	
         	return winner;
         }
         winner = checkDiagonals();
-        if (winner != ' ') {
+        if (winner != ' ') {        	
         	return winner;
         }
         

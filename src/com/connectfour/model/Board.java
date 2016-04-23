@@ -3,6 +3,7 @@ package com.connectfour.model;
 public class Board {
 	public char[][] checker;
 	public char currentColor = 'B';
+	public boolean isFinished = false;
 	private int height;
 	private int width;
 	

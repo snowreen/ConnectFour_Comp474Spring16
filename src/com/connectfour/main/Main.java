@@ -34,10 +34,29 @@ public class Main {
 		
 		// This variable will alternate and mean whose turn is it. It is Red's turn now.
         boolean isRed = true;
-        String value = null;
+        String value = " ";
         Boot game = new Boot(board);
         System.err.println("Boot Complete");
         while (true) {
+        	
+        	WinCheck winCheck = new WinCheck(board);
+            char result = winCheck.getWinner(board);
+            if (result == 'D') {
+                System.out.println("It is a draw!");
+                //board.isFinished=true;
+                break;
+            }
+            else if (result == 'R') {
+                System.out.println("Red wins!");
+                //board.isFinished=true;
+                break;
+            }
+            else if (result == 'B') {
+                System.out.println("Black wins!");
+                //board.isFinished=true;
+                break;
+            }
+        	
         	System.out.println("Please type \"reset\" to restart the game anytime!");
             if (board.currentColor=='R')
                 System.out.println("Red's turn now!");            
@@ -59,20 +78,7 @@ public class Main {
             }
 
             board.printBoard();
-            WinCheck winCheck = new WinCheck(board);
-            char result = winCheck.getWinner();
-            if (result == 'D') {
-                System.out.println("It is a draw!");
-                break;
-            }
-            else if (result == 'R') {
-                System.out.println("Red wins!");
-                break;
-            }
-            else if (result == 'B') {
-                System.out.println("Black wins!");
-                break;
-            }
+            
             
             isRed = !isRed;
             
