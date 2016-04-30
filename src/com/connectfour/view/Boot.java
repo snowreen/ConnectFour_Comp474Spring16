@@ -38,8 +38,7 @@ public class Boot {
 		
 		this.map = gameBoard;
 		map.initializeBoard();		
-		grid = new TileGrid(map);
-		//Tile empTile = new Tile(0, 0, 64, 64, TileType.EmptySlot);
+		grid = new TileGrid(map);		
 		while(!Display.isCloseRequested()&&map.isFinished==false){
 		 
 			
@@ -48,15 +47,15 @@ public class Boot {
             this.result = winCheck.getWinner(map);
             if (result == 'D') {
                 System.out.println("It is a draw!");
-                //board.isFinished=true;
+                
             }
             else if (result == 'R') {
                 System.out.println("Red wins!");
-                //board.isFinished=true;
+               
             }
             else if (result == 'B') {
                 System.out.println("Black wins!");
-                //board.isFinished=true;                
+                               
             }
             
             /*

@@ -35,6 +35,32 @@ public class MainMenu {
 				StateManager.setState(GameState.GAME);
 			}
 		}
+		if(Mouse.isButtonDown(0)){
+			if (menuUI.isButtonClicked("SingleRegE")){
+				StateManager.setState(GameState.GAME);
+			}
+		}
+		if(Mouse.isButtonDown(0)){
+			if (menuUI.isButtonClicked("SingleRegH")){
+				StateManager.setState(GameState.GAME);
+			}
+		}
+		if(Mouse.isButtonDown(0)){
+			if (menuUI.isButtonClicked("TwoPlayerPush")){
+				StateManager.setState(GameState.GAME);
+			}
+		}
+		if(Mouse.isButtonDown(0)){
+			if (menuUI.isButtonClicked("SinglePushE")){
+				StateManager.setState(GameState.GAME);
+			}
+		}
+		if(Mouse.isButtonDown(0)){
+			if (menuUI.isButtonClicked("SinglePushH")){
+				StateManager.setState(GameState.GAME);
+			}
+		}
+		
 	}
 	
 	public void update() {
