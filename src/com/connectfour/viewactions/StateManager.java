@@ -7,7 +7,7 @@ import com.connectfour.view.MainMenu;
 public class StateManager {
 	
 	public static enum GameState {
-		MAINMENU, GAME
+		MAINMENU, GAME, GAMEPUSH
 	}
 	
 	public static GameState gameState = GameState.MAINMENU;
@@ -23,6 +23,8 @@ public class StateManager {
 			mainMenu.update();
 			break;
 		case GAME:
+			break;
+		case GAMEPUSH:
 			break;
 		}
 	}

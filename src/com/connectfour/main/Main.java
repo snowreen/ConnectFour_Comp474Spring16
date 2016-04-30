@@ -33,11 +33,11 @@ public class Main {
 		
 		
 		// This variable will alternate and mean whose turn is it. It is Red's turn now.
-        boolean isRed = true;
+        //boolean isRed = true;
         String value = " ";
         Boot game = new Boot(board);
         System.err.println("Boot Complete");
-        while (true) {
+       /* while (true) {
         	
         	WinCheck winCheck = new WinCheck(board);
             char result = winCheck.getWinner(board);
@@ -76,6 +76,7 @@ public class Main {
                 System.out.println("This column is filled! Choose another one.");
                 continue;
             }
+            
 
             board.printBoard();
             
@@ -83,7 +84,7 @@ public class Main {
             isRed = !isRed;
             
             
-        }
+        }*/
         
         if (value.equalsIgnoreCase("reset")) {
         	playConnectFour(input, board);

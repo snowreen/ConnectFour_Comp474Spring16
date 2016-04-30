@@ -47,17 +47,17 @@ public class MainMenu {
 		}
 		if(Mouse.isButtonDown(0)){
 			if (menuUI.isButtonClicked("TwoPlayerPush")){
-				StateManager.setState(GameState.GAME);
+				StateManager.setState(GameState.GAMEPUSH);
 			}
 		}
 		if(Mouse.isButtonDown(0)){
 			if (menuUI.isButtonClicked("SinglePushE")){
-				StateManager.setState(GameState.GAME);
+				StateManager.setState(GameState.GAMEPUSH);
 			}
 		}
 		if(Mouse.isButtonDown(0)){
 			if (menuUI.isButtonClicked("SinglePushH")){
-				StateManager.setState(GameState.GAME);
+				StateManager.setState(GameState.GAMEPUSH);
 			}
 		}
 		

@@ -6,6 +6,7 @@ import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.opengl.Texture;
 
 import com.connectfour.model.Board;
+import com.connectfour.model.BoardPush;
 import com.connectfour.model.WinCheck;
 import com.connectfour.viewactions.StateManager;
 import com.connectfour.viewactions.StateManager.GameState;
@@ -35,8 +36,15 @@ public class Boot {
 		System.err.println("booting up view now...");
 
 		BeginSession();
-		
-		this.map = gameBoard;
+		while(StateManager.gameState==GameState.MAINMENU){
+        	StateManager.update();
+        	Display.update();
+			Display.sync(60);
+        }
+		 if(StateManager.gameState==GameState.GAMEPUSH)
+         	this.map=new BoardPush();
+		 else
+			 this.map = gameBoard;
 		map.initializeBoard();		
 		grid = new TileGrid(map);		
 		while(!Display.isCloseRequested()&&map.isFinished==false){
@@ -63,12 +71,10 @@ public class Boot {
              * when button is clicked state changes
              * then starts game
              */
-            while(StateManager.gameState==GameState.MAINMENU){
-            	StateManager.update();
-            	Display.update();
-    			Display.sync(60);
-            }
             
+            
+            
+           
 			//grid.Draw();
 			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
 			
