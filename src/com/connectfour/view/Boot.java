@@ -7,6 +7,7 @@ import org.newdawn.slick.opengl.Texture;
 
 import com.connectfour.model.Board;
 import com.connectfour.model.WinCheck;
+import com.connectfour.viewactions.StateManager;
 import com.connectfour.viewactions.UI;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -62,6 +63,13 @@ public class Boot {
 			
 		
 			grid.update(map);
+			
+            /*Below will draw the main menu. 
+            *Comment above line and uncomment below to test
+            */
+			
+            //StateManager.update();
+			
 			Display.update();
 			Display.sync(60);
 			

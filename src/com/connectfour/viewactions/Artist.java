@@ -36,6 +36,7 @@ public class Artist {
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 		
 		
+		
 	}
 	
 	public static void DrawQuad(float x, float y, float width, float height ){
