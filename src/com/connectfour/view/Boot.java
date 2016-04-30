@@ -8,6 +8,7 @@ import org.newdawn.slick.opengl.Texture;
 import com.connectfour.model.Board;
 import com.connectfour.model.WinCheck;
 import com.connectfour.viewactions.StateManager;
+import com.connectfour.viewactions.StateManager.GameState;
 import com.connectfour.viewactions.UI;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -56,20 +57,24 @@ public class Boot {
             else if (result == 'B') {
                 System.out.println("Black wins!");
                 //board.isFinished=true;                
-            }			    
+            }
+            
+            /*
+             * Originally starts game in main menu 
+             * when button is clicked state changes
+             * then starts game
+             */
+            while(StateManager.gameState==GameState.MAINMENU){
+            	StateManager.update();
+            	Display.update();
+    			Display.sync(60);
+            }
             
 			//grid.Draw();
 			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
 			
 		
-			grid.update(map);
-			
-            /*Below will draw the main menu. 
-            *Comment above line and uncomment below to test
-            */
-			
-            //StateManager.update();
-			
+			grid.update(map); 			
 			Display.update();
 			Display.sync(60);
 			

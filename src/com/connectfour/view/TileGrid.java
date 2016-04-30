@@ -120,7 +120,7 @@ for (int i = 0; i <map.length; i++){
 	
 	public void Draw(Board board){
 		boardUI = new UI();
-		boardUI.addButton("Reset", "Reset", 448, 128);
+		
 		DrawQuadTex(FastTex("CurrentPlayer"), (float)448, (float)0, (float)64, (float)64);
 		//Display current player
 		if (board.currentColor=='R'){
@@ -139,7 +139,7 @@ for (int i = 0; i <map.length; i++){
 		for (int k = 0; k < 7; k++){
 			boardUI.addButton("DropButton"+k, "DropButton", k*64, 448);						
 		}
-		
+		boardUI.addButton("Reset", "Reset", 448, 128);
 		boardUI.draw();	
 	}
 }
