@@ -46,47 +46,39 @@ public class Boot {
 		 else
 			 this.map = gameBoard;
 		map.initializeBoard();		
-		grid = new TileGrid(map);		
-		while(!Display.isCloseRequested()&&map.isFinished==false){
-		 
-			
-			
-			WinCheck winCheck = new WinCheck(map);
-            this.result = winCheck.getWinner(map);
-            if (result == 'D') {
-                System.out.println("It is a draw!");
-                
-            }
-            else if (result == 'R') {
-                System.out.println("Red wins!");
-               
-            }
-            else if (result == 'B') {
-                System.out.println("Black wins!");
-                               
-            }
-            
+		grid = new TileGrid(map);	
+		grid.updateBoard(map);
+		Display.update();
+		Display.sync(60);
+		while(!Display.isCloseRequested() && map.isFinished==false) {
             /*
              * Originally starts game in main menu 
              * when button is clicked state changes
              * then starts game
              */
-            
-            
-            
-           
+			
 			//grid.Draw();
 			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
 			
-		
-			grid.update(map); 			
+			grid.takeInput(map);
 			Display.update();
 			Display.sync(60);
 			
+			if (TileGrid.isUpdateNeeded) {
+				grid.updateBoard(map);
+				Display.update();
+				Display.sync(60);
+				TileGrid.isUpdateNeeded = false;
+			}
 			
-			
+			if (! TileGrid.isWinChecked) {
+				WinCheck winCheck = new WinCheck(map);
+	            this.result = winCheck.getWinner(map);
+	            TileGrid.isWinChecked = true;
+			}
             
             if (result=='B'){
+            	System.out.println("Black wins!");
             	Display.update();
             	DrawQuadTex(FastTex("BlackWinner"),0,0,512,512);
             	Display.update();
@@ -100,6 +92,7 @@ public class Boot {
             }
             //below will display who won the game for two seconds before closing
             if (result=='R'){
+            	System.out.println("Red wins!");
             	Display.update();
             	DrawQuadTex(FastTex("RedWinner"),0,0,512,512);
             	Display.update();
@@ -113,6 +106,7 @@ public class Boot {
             }
             
             if (result=='D'){
+            	System.out.println("It is a draw!");
             	Display.update();
             	DrawQuadTex(FastTex("NoWinner"),0,0,512,512);
             	Display.update();
@@ -124,10 +118,7 @@ public class Boot {
 				}            	
             	map.isFinished=true;
             }
-        
-	        }		
-			
-		
+        }
 		
 		
 		Display.destroy();

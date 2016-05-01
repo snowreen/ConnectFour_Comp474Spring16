@@ -98,9 +98,9 @@ public class WinCheck {
         return winner;
 	}
 	
-	private char leftToRightUpwards(char[][] checker) {
+    private char leftToRightUpwards(char[][] checker) {
 		for (int row = board.getHeight() - 1; row >= CONNECT_WIN_CRITERIA - 1; --row) {
-            int count = 0;
+            int count = 1;
             // Comparing current element with the previous
             int previousRow = row;
             for (int column = 0; column < board.getWidth() - 1; ++column) {
@@ -109,21 +109,20 @@ public class WinCheck {
             	}
                 if (checker[previousRow][column] != ' ' && checker[previousRow - 1][column + 1] != ' ') {
                 	if (checker[previousRow - 1][column + 1] == checker[previousRow][column]) {
-                		if (column == 0 || (column > 0 && previousRow < board.getHeight() - 1 
-                				&& (checker[previousRow + 1][column - 1] == ' ' || checker[previousRow + 1][column - 1] != checker[previousRow][column]))) {
-                    		count++;
-                    	}
                     	count++;
                     	if (count >= CONNECT_WIN_CRITERIA) {
                         	return checker[previousRow][column];
                         }
+                    	previousRow--;
                 	} else {
-                    	count = 0;
+                    	count = 1;
+                    	previousRow = row;
                     }
                 } else {
-                	count = 0;
+                	count = 1;
+                	previousRow = row;
                 }
-                previousRow--;
+                
                 if (previousRow < 1) {
             		break;
             	}
@@ -133,41 +132,40 @@ public class WinCheck {
 		// Otherwise returning empty character, which means nobody win in left to right upwards diagonal
         return ' ';
 	}
-	
-	private char leftToRightDownwards(char[][] checker) {
-		for (int row = 0; row <= board.getHeight() - CONNECT_WIN_CRITERIA; ++row) {
-            int count = 0;
+
+
+    private char leftToRightDownwards(char[][] checker) {
+        for (int row = 0; row <= board.getHeight() - CONNECT_WIN_CRITERIA; ++row) {
+            int count = 1;
             // Comparing current element with the next
             int nextRow = row;
             for (int column = 0; column < board.getWidth() - 1; ++column) {
-            	
-            	if (!((board.getWidth() - column) >= (CONNECT_WIN_CRITERIA - count))) {
-            		break;
-            	}
+                
+                if (!((board.getWidth() - column) >= (CONNECT_WIN_CRITERIA - count))) {
+                    break;
+                }
                 if (checker[nextRow][column] != ' ' && checker[nextRow + 1][column + 1] != ' ') {
-                	if (checker[nextRow + 1][column + 1] == checker[nextRow][column]) {
-                		if (column == 0 || (column > 0 && nextRow > 0 
-                				&& (checker[nextRow - 1][column - 1] == ' ' || checker[nextRow - 1][column - 1] != checker[nextRow][column]))) {
-                    		count++;
-                    	}
-                    	count++;
-                    	if (count >= CONNECT_WIN_CRITERIA) {
-                        	return checker[nextRow][column];
+                    if (checker[nextRow + 1][column + 1] == checker[nextRow][column]) {
+                        count++;
+                        if (count >= CONNECT_WIN_CRITERIA) {
+                            return checker[nextRow][column];
                         }
-                	} else {
-                    	count = 0;
+                        nextRow++;
+                    } else {
+                        count = 1;
+                        nextRow = row;
                     }
                 } else {
-                	count = 0;
+                    count = 1;
+                    nextRow = row;
                 }
-                nextRow++;
                 if (nextRow >= board.getHeight() - 1) {
-            		break;
-            	}
+                    break;
+                }
                 
             }
         }
-		// Otherwise returning empty character, which means nobody win in left to right downwards diagonal
+        // Otherwise returning empty character, which means nobody win in left to right downwards diagonal
         return ' ';
-	}
+    }
 }

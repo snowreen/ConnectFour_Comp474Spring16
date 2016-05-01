@@ -37,25 +37,7 @@ public class Main {
         String value = " ";
         Boot game = new Boot(board);
         System.err.println("Boot Complete");
-       /* while (true) {
-        	
-        	WinCheck winCheck = new WinCheck(board);
-            char result = winCheck.getWinner(board);
-            if (result == 'D') {
-                System.out.println("It is a draw!");
-                //board.isFinished=true;
-                break;
-            }
-            else if (result == 'R') {
-                System.out.println("Red wins!");
-                //board.isFinished=true;
-                break;
-            }
-            else if (result == 'B') {
-                System.out.println("Black wins!");
-                //board.isFinished=true;
-                break;
-            }
+        /*while (true) {
         	
         	System.out.println("Please type \"reset\" to restart the game anytime!");
             if (board.currentColor=='R')
@@ -77,6 +59,23 @@ public class Main {
                 continue;
             }
             
+            WinCheck winCheck = new WinCheck(board);
+            char result = winCheck.getWinner(board);
+            if (result == 'D') {
+                System.out.println("It is a draw!");
+                //board.isFinished=true;
+                break;
+            }
+            else if (result == 'R') {
+                System.out.println("Red wins!");
+                //board.isFinished=true;
+                break;
+            }
+            else if (result == 'B') {
+                System.out.println("Black wins!");
+                //board.isFinished=true;
+                break;
+            }
 
             board.printBoard();
             

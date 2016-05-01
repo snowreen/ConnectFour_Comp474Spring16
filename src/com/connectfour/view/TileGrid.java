@@ -13,11 +13,14 @@ public class TileGrid {
 	public Tile[][] map;
 	private Board boardDisplay;
 	
+	public static boolean isWinChecked = false;
+	public static boolean isUpdateNeeded = false;
+	
 	public TileGrid(){
 		map = new Tile[7][7];
 		for (int i = 0; i <map.length; i++){
 			for (int j = 0; j<map[i].length; j++){
-				map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.EmptySlot);
+				map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.EmptySlot);
 			}
 		}
 	}
@@ -34,15 +37,15 @@ public class TileGrid {
 				 * r is red piece
 				 * b is black piece
 				 */
-				switch(newMap.checker[j][i]){
+				switch(newMap.checker[i][j]){
 				case ' ':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.EmptySlot);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.EmptySlot);
 					break;					
 				case 'R':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.RedPiece);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.RedPiece);
 					break;
 				case 'B':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.BlackPiece);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.BlackPiece);
 					break;				
 				}				
 			}
@@ -51,8 +54,8 @@ public class TileGrid {
 	
 	
 	//to be placed in boot while loop to update the view of the board
-	public void update(Board board){
-for (int i = 0; i <map.length; i++){
+	public void updateBoard(Board board){
+		for (int i = 0; i <map.length; i++){
 			
 			for (int j = 0; j<map[i].length; j++){
 				/* 
@@ -61,29 +64,29 @@ for (int i = 0; i <map.length; i++){
 				 * r is red piece
 				 * b is black piece
 				 */
-				switch(board.checker[j][i]){
+				switch(board.checker[i][j]){
 				case ' ':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.EmptySlot);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.EmptySlot);
 					break;					
 				case 'R':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.RedPiece);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.RedPiece);
 					break;
 				case 'B':
-					map[i][j] = new Tile(i * 64, j * 64, 64,64, TileType.BlackPiece);
+					map[i][j] = new Tile(j * 64, i * 64, 64,64, TileType.BlackPiece);
 					break;				
 				}				
 			}
 		}
 		this.Draw(board);
-		updateButtons(board);
 	}
 	//lets us set actions when buttons are pressed
-	private void updateButtons(Board board){
+	public void takeInput(Board board){
 		
 		//if (Mouse.isButtonDown(0)){
 		while(Mouse.next()){
 			if(Mouse.getEventButton() > -1){
 				if(Mouse.getEventButtonState()){
+					
 					if (board.currentColor=='B')
 		                System.out.println("Red's turn now!");            
 		            else 
@@ -91,27 +94,44 @@ for (int i = 0; i <map.length; i++){
 			
 					if(boardUI.isButtonClicked("DropButton0")){							
 						board.putColorChar(0, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton1")){							
 						board.putColorChar(1, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton2")){							
 						board.putColorChar(2, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton3")){							
 						board.putColorChar(3, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton4")){							
 						board.putColorChar(4, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton5")){							
 						board.putColorChar(5, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("DropButton6")){							
 						board.putColorChar(6, board.currentColor);
+						isWinChecked = false;
+						isUpdateNeeded = true;
 					}
-					if(boardUI.isButtonClicked("Reset")){							
-						board.initializeBoard();
+					if(boardUI.isButtonClicked("Reset")){
+						Board newBoard = new Board();
+						newBoard.initializeBoard();
+						isWinChecked = true;
+						isUpdateNeeded = true;
 					}
 				}
             }
