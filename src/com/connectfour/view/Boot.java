@@ -98,7 +98,7 @@ public class Boot {
 				}            	
             	map.isFinished=true;
             }
-            
+            //below will display who won the game for two seconds before closing
             if (result=='R'){
             	Display.update();
             	DrawQuadTex(FastTex("RedWinner"),0,0,512,512);
