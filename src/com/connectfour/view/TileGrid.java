@@ -139,7 +139,7 @@ for (int i = 0; i <map.length; i++){
 		for (int k = 0; k < 7; k++){
 			boardUI.addButton("DropButton"+k, "DropButton", k*64, 448);						
 		}
-		boardUI.addButton("Reset", "Reset", 448, 128);
+		boardUI.addButton("Reset", "Reset", 448, 128,64,384);
 		boardUI.draw();	
 	}
 }

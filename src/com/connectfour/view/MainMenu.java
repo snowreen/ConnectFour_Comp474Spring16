@@ -16,10 +16,8 @@ public class MainMenu {
 	private UI menuUI;
 	
 	public MainMenu(){
-		background = FastTex("MainMenu");
-		classButton = FastTex("ClassEasy2");
-		menuUI = new UI();
-		//DrawQuadTex(classButton,36,239,116,44);
+		background = FastTex("MainMenu");		
+		menuUI = new UI();		
 		menuUI.addButton("TwoPlayerReg", "Class", 36, 240);
 		menuUI.addButton("SingleRegE", "ClassEasy", 198, 240);
 		menuUI.addButton("SingleRegH", "ClassHard", 360, 240);

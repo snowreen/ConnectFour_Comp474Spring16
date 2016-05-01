@@ -86,12 +86,42 @@ public class Boot {
 			
 			
             
-            if (result!=' '){
+            if (result=='B'){
+            	Display.update();
+            	DrawQuadTex(FastTex("BlackWinner"),0,0,512,512);
+            	Display.update();
+            	
             	try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}
+				}            	
+            	map.isFinished=true;
+            }
+            
+            if (result=='R'){
+            	Display.update();
+            	DrawQuadTex(FastTex("RedWinner"),0,0,512,512);
+            	Display.update();
+            	
+            	try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}            	
+            	map.isFinished=true;
+            }
+            
+            if (result=='D'){
+            	Display.update();
+            	DrawQuadTex(FastTex("NoWinner"),0,0,512,512);
+            	Display.update();
+            	
+            	try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}            	
             	map.isFinished=true;
             }
         
