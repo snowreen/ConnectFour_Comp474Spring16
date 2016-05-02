@@ -15,6 +15,7 @@ public class TileGrid {
 	
 	public static boolean isWinChecked = false;
 	public static boolean isUpdateNeeded = false;
+	public static boolean isReset = false;
 	
 	public TileGrid(){
 		map = new Tile[7][7];
@@ -128,10 +129,9 @@ public class TileGrid {
 						isUpdateNeeded = true;
 					}
 					if(boardUI.isButtonClicked("Reset")){
-						Board newBoard = new Board();
-						newBoard.initializeBoard();
 						isWinChecked = true;
-						isUpdateNeeded = true;
+						isUpdateNeeded = false;
+						isReset = true;
 					}
 				}
             }

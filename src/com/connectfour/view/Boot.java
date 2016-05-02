@@ -1,6 +1,7 @@
 package com.connectfour.view;
 
 import org.lwjgl.LWJGLException;
+
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.opengl.Texture;
@@ -15,9 +16,6 @@ import com.connectfour.viewactions.UI;
 import static org.lwjgl.opengl.GL11.*;
 
 import static com.connectfour.viewactions.Artist.*;
-
-
-
 
 
 
@@ -59,10 +57,19 @@ public class Boot {
 			
 			//grid.Draw();
 			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
-			
-			grid.takeInput(map);
 			Display.update();
 			Display.sync(60);
+			grid.takeInput(map);
+			
+			if (TileGrid.isReset) {
+				map = new Board();
+				map.initializeBoard();
+				grid = new TileGrid(map);
+				grid.updateBoard(map);
+				Display.update();
+				Display.sync(60);
+				TileGrid.isReset = false;
+			}
 			
 			if (TileGrid.isUpdateNeeded) {
 				grid.updateBoard(map);
