@@ -29,20 +29,23 @@ public class Boot {
 	public char result;
 
 	//take in board variable from main
-	public Boot(Board gameBoard){	
-
+	public Boot(Board gameBoard){
+		this.map = gameBoard;
+	}
+	
+	public void playGame() {
 		System.err.println("booting up view now...");
 
 		BeginSession();
+		StateManager.initializeMainMenu();
 		while(StateManager.gameState==GameState.MAINMENU){
-        	StateManager.update();
-        	Display.update();
+			Display.update();
 			Display.sync(60);
+        	StateManager.stateUpdate();
         }
-		 if(StateManager.gameState==GameState.GAMEPUSH)
-         	this.map=new BoardPush();
-		 else
-			 this.map = gameBoard;
+		 if(StateManager.gameState==GameState.GAMEPUSH) {
+			 this.map=new BoardPush(); 
+		 }
 		map.initializeBoard();		
 		grid = new TileGrid(map);	
 		grid.updateBoard(map);
@@ -130,7 +133,7 @@ public class Boot {
 		
 		Display.destroy();
 		System.err.println("Display destroyed");
-	}	
+	}
 	
 	/*public static void main(String[] args){
 		new Boot(new Board(7,7) );

@@ -36,7 +36,7 @@ public class Main {
         //boolean isRed = true;
         String value = " ";
         Boot game = new Boot(board);
-        System.err.println("Boot Complete");
+        game.playGame();
         /*while (true) {
         	
         	System.out.println("Please type \"reset\" to restart the game anytime!");

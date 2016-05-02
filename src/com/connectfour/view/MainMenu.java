@@ -1,6 +1,7 @@
 package com.connectfour.view;
 
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.opengl.Texture;
 
 import com.connectfour.viewactions.StateManager;
@@ -27,45 +28,28 @@ public class MainMenu {
 		
 	}
 	
-	private void updateButtons(){
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("TwoPlayerReg")){
-				StateManager.setState(GameState.GAME);
-			}
-		}
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("SingleRegE")){
-				StateManager.setState(GameState.GAME);
-			}
-		}
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("SingleRegH")){
-				StateManager.setState(GameState.GAME);
-			}
-		}
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("TwoPlayerPush")){
-				StateManager.setState(GameState.GAMEPUSH);
-			}
-		}
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("SinglePushE")){
-				StateManager.setState(GameState.GAMEPUSH);
-			}
-		}
-		if(Mouse.isButtonDown(0)){
-			if (menuUI.isButtonClicked("SinglePushH")){
-				StateManager.setState(GameState.GAMEPUSH);
-			}
+	public void updateButtons(){
+		if (menuUI.isButtonClicked("TwoPlayerReg")){
+			StateManager.setState(GameState.GAME);
+		} else if (menuUI.isButtonClicked("SingleRegE")){
+			StateManager.setState(GameState.SINGLE_PLAYER_EASY);
+		} else if (menuUI.isButtonClicked("SingleRegH")){
+			StateManager.setState(GameState.GAME);
+		} else if (menuUI.isButtonClicked("TwoPlayerPush")){
+			StateManager.setState(GameState.GAMEPUSH);
+		} else if (menuUI.isButtonClicked("SinglePushE")){
+			StateManager.setState(GameState.GAMEPUSH);
+		} else if (menuUI.isButtonClicked("SinglePushH")){
+			StateManager.setState(GameState.GAMEPUSH);
 		}
 		
 	}
 	
-	public void update() {
+	public void menuUpdate() {
 		DrawQuadTex(background,0,0,512,512);		
 		menuUI.draw();
-		updateButtons();
-		
+		Display.update();
+		Display.sync(60);
 	}
 
 }

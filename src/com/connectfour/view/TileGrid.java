@@ -5,8 +5,11 @@ import static com.connectfour.viewactions.UI.*;
 import org.lwjgl.input.Mouse;
 
 import com.connectfour.model.Board;
+import com.connectfour.robot.EasyRobot;
 import com.connectfour.viewactions.Button;
+import com.connectfour.viewactions.StateManager;
 import com.connectfour.viewactions.UI;
+import com.connectfour.viewactions.StateManager.GameState;
 
 public class TileGrid {
 	public UI boardUI;
@@ -16,6 +19,7 @@ public class TileGrid {
 	public static boolean isWinChecked = false;
 	public static boolean isUpdateNeeded = false;
 	public static boolean isReset = false;
+	
 	
 	public TileGrid(){
 		map = new Tile[7][7];
@@ -83,16 +87,19 @@ public class TileGrid {
 	//lets us set actions when buttons are pressed
 	public void takeInput(Board board){
 		
+		if (StateManager.gameState == GameState.SINGLE_PLAYER_EASY && board.currentColor == 'R') {
+			int boardColumn = EasyRobot.getRandomColumn();
+			board.putColorChar(boardColumn, board.currentColor);
+			isWinChecked = false;
+			isUpdateNeeded = true;
+			return;
+		}
+		
 		//if (Mouse.isButtonDown(0)){
 		while(Mouse.next()){
 			if(Mouse.getEventButton() > -1){
 				if(Mouse.getEventButtonState()){
 					
-					if (board.currentColor=='B')
-		                System.out.println("Red's turn now!");            
-		            else 
-		                System.out.println("Black's turn now!");
-			
 					if(boardUI.isButtonClicked("DropButton0")){							
 						board.putColorChar(0, board.currentColor);
 						isWinChecked = false;

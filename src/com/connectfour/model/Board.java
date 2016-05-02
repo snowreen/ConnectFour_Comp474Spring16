@@ -1,5 +1,8 @@
 package com.connectfour.model;
 
+import com.connectfour.view.TileGrid;
+import com.connectfour.viewactions.StateManager;
+
 public class Board {
 	public char[][] checker;
 	public char currentColor = 'B';
@@ -87,9 +90,13 @@ public class Board {
 	  */
 	protected char colorSwitch(char color){
 		if(color=='R'){
+			System.out.println("Black's turn now!");
 			color='B';
 		}
-		else color = 'R';
+		else {
+			System.out.println("Red's turn now!");
+			color = 'R';
+		}
 		return color;
 	}
 	
