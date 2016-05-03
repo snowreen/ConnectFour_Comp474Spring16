@@ -37,18 +37,27 @@ public class Boot {
 		System.err.println("booting up view now...");
 
 		BeginSession();
-		StateManager.initializeMainMenu();
-		while(StateManager.gameState==GameState.MAINMENU){
-			Display.update();
-			Display.sync(60);
+		
+		while(StateManager.gameState==GameState.MAINMENU && !Display.isCloseRequested()){
+			glClear(GL_COLOR_BUFFER_BIT);
+			StateManager.initializeMainMenu();
         	StateManager.stateUpdate();
-        }
+        	Display.update();
+			Display.sync(60);
+        } 
+		if (Display.isCloseRequested()) {
+			Display.destroy();
+			System.err.println("Display destroyed");
+		}
 		 if(StateManager.gameState==GameState.GAMEPUSH) {
 			 this.map=new BoardPush(); 
 		 }
 		map.initializeBoard();		
-		grid = new TileGrid(map);	
+		grid = new TileGrid(map);
+		
+		glClear(GL_COLOR_BUFFER_BIT);
 		grid.updateBoard(map);
+		grid.Draw(map);
 		Display.update();
 		Display.sync(60);
 		while(!Display.isCloseRequested() && map.isFinished==false) {
@@ -58,24 +67,25 @@ public class Boot {
              * then starts game
              */
 			
-			//grid.Draw();
-			//DrawQuadTex(FastTex("RedPiece"), 0, 0, 64, 64);
+			grid.takeInput(map);
 			Display.update();
 			Display.sync(60);
-			grid.takeInput(map);
-			
 			if (TileGrid.isReset) {
 				map = new Board();
 				map.initializeBoard();
 				grid = new TileGrid(map);
+				glClear(GL_COLOR_BUFFER_BIT);
 				grid.updateBoard(map);
+				grid.Draw(map);
 				Display.update();
 				Display.sync(60);
 				TileGrid.isReset = false;
 			}
 			
 			if (TileGrid.isUpdateNeeded) {
+				glClear(GL_COLOR_BUFFER_BIT);
 				grid.updateBoard(map);
+				grid.Draw(map);
 				Display.update();
 				Display.sync(60);
 				TileGrid.isUpdateNeeded = false;
@@ -89,10 +99,11 @@ public class Boot {
             
             if (result=='B'){
             	System.out.println("Black wins!");
-            	Display.update();
+            	glClear(GL_COLOR_BUFFER_BIT);
+            	grid.Draw(map);
             	DrawQuadTex(FastTex("BlackWinner"),0,0,512,512);
             	Display.update();
-            	
+            	Display.sync(60);
             	try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -103,10 +114,11 @@ public class Boot {
             //below will display who won the game for two seconds before closing
             if (result=='R'){
             	System.out.println("Red wins!");
-            	Display.update();
+            	glClear(GL_COLOR_BUFFER_BIT);
+            	grid.Draw(map);
             	DrawQuadTex(FastTex("RedWinner"),0,0,512,512);
             	Display.update();
-            	
+            	Display.sync(60);
             	try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -117,10 +129,11 @@ public class Boot {
             
             if (result=='D'){
             	System.out.println("It is a draw!");
-            	Display.update();
+            	glClear(GL_COLOR_BUFFER_BIT);
+            	grid.Draw(map);
             	DrawQuadTex(FastTex("NoWinner"),0,0,512,512);
             	Display.update();
-            	
+            	Display.sync(60);
             	try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -134,8 +147,4 @@ public class Boot {
 		Display.destroy();
 		System.err.println("Display destroyed");
 	}
-	
-	/*public static void main(String[] args){
-		new Boot(new Board(7,7) );
-	}*/
 }

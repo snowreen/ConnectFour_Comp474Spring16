@@ -82,7 +82,7 @@ public class TileGrid {
 				}				
 			}
 		}
-		this.Draw(board);
+		//this.Draw(board);
 	}
 	//lets us set actions when buttons are pressed
 	public void takeInput(Board board){

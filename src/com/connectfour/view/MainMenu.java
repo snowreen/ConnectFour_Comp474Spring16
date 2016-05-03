@@ -48,8 +48,8 @@ public class MainMenu {
 	public void menuUpdate() {
 		DrawQuadTex(background,0,0,512,512);		
 		menuUI.draw();
-		Display.update();
-		Display.sync(60);
+		/*Display.update();
+		Display.sync(60);*/
 	}
 
 }
